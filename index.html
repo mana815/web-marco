@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Profesional | Marco Navas González</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+      :root {
+        --primary: #2563eb;
+        --secondary: #64748b;
+        --dark: #0f172a;
+        --light: #f8fafc;
+        --accent: #3b82f6;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: var(--light);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+        min-height: 100vh;
+      }
+
+      /* Botón de descarga */
+      .download-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .download-btn:hover {
+        transform: translateY(-2px);
+        background: #1d4ed8;
+        box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+      }
+
+      /* Contenedor del CV */
+      #cv-content {
+        background: white;
+        color: var(--dark);
+        width: 100%;
+        max-width: 850px;
+        padding: 50px;
+        border-radius: 8px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 40px;
+      }
+
+      /* Columna Izquierda (Sidebar) */
+      .sidebar {
+        border-right: 1px solid #e2e8f0;
+        padding-right: 20px;
+      }
+
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 4px solid var(--primary);
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--dark);
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
+
+      .title-tag {
+        color: var(--primary);
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+      }
+
+      .section-h {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--secondary);
+        margin: 25px 0 10px 0;
+        font-weight: 700;
+        border-bottom: 2px solid var(--primary);
+        display: inline-block;
+      }
+
+      .contact-item,
+      .skill-item {
+        font-size: 13px;
+        margin-bottom: 8px;
+        color: #475569;
+      }
+
+      .pill-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .pill {
+        background: #eff6ff;
+        color: #1e40af;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      /* Columna Derecha (Contenido) */
+      .main-content .block {
+        margin-bottom: 25px;
+      }
+
+      .job-title {
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--dark);
+      }
+
+      .company {
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .date {
+        font-size: 12px;
+        color: var(--secondary);
+        margin-bottom: 8px;
+      }
+
+      .desc {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #334155;
+      }
+
+      @media (max-width: 768px) {
+        #cv-content {
+          grid-template-columns: 1fr;
+          padding: 30px;
+        }
+        .sidebar {
+          border-right: none;
+          border-bottom: 1px solid #e2e8f0;
+          padding-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="download-btn" onclick="downloadPDF()">
+      <svg
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+        ></path>
+      </svg>
+      Descargar CV en PDF
+    </button>
+
+    <div id="cv-content">
+      <div class="sidebar">
+        <img
+          src="https://i.imgur.com/8YvY6R7.jpeg"
+          alt="Marco Navas"
+          class="profile-img"
+        />
+
+        <h1>Marco Navas<br />González</h1>
+        <p class="title-tag">Técnico Informático</p>
+
+        <div class="section-h">Contacto</div>
+        <div class="contact-item">📧 marconavas989@gmail.com</div>
+        <div class="contact-item">📞 +34 618 347 420</div>
+        <div class="contact-item">📍 C/ Deltebre, nº7, 1-4<br />Tarragona</div>
+
+        <div class="section-h">Idiomas</div>
+        <div class="contact-item"><strong>Español:</strong> Nativo</div>
+        <div class="contact-item"><strong>Catalán:</strong> Nativo</div>
+        <div class="contact-item"><strong>Inglés:</strong> Nociones</div>
+        <div class="contact-item"><strong>Portugués:</strong> Nociones</div>
+
+        <div class="section-h">Intereses</div>
+        <div class="pill-container">
+          <span class="pill">Baloncesto</span>
+          <span class="pill">Informática</span>
+          <span class="pill">Fórmula 1</span>
+          <span class="pill">Naturaleza</span>
+          <span class="pill">Animales</span>
+          <span class="pill">Trabajar</span>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="section-h">Experiencia Laboral</div>
+
+        <div class="block">
+          <div class="job-title">Técnico Informático (Prácticas)</div>
+          <div class="company">Colegio La Salle Torreforta</div>
+          <div class="date">Noviembre 2023 – Mayo 2024</div>
+          <p class="desc">
+            Desempeño de funciones técnicas y soporte informático integral
+            dentro del centro educativo.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="job-title">Camarero</div>
+          <div class="company">PortAventura World – Hotel Caribe</div>
+          <div class="date">Temporada</div>
+          <p class="desc">
+            Atención al cliente y servicio de mesa en entorno de alta demanda
+            turística.
+          </p>
+        </div>
+
+        <div class="section-h">Formación Académica</div>
+
+        <div class="block">
+          <div class="job-title">Ciclo Medio de Informática</div>
+          <div class="company">Tarragona</div>
+          <div class="date">Graduado en 2024</div>
+        </div>
+
+        <div class="block">
+          <div class="job-title">ESO</div>
+          <div class="company">Colegio La Salle Torreforta</div>
+          <div class="date">Finalizado en 2020</div>
+        </div>
+
+        <div class="section-h">Habilidades Técnicas</div>
+        <div class="block">
+          <div class="skill-item"><strong>Informática:</strong> Avanzado</div>
+          <div class="skill-item"><strong>Deporte:</strong> Avanzado</div>
+          <div class="skill-item">
+            <strong>Entrenador Baloncesto:</strong> Avanzado
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function downloadPDF() {
+        const element = document.getElementById("cv-content");
+        const opt = {
+          margin: 0,
+          filename: "CV_Marco_Navas.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+        };
+        html2pdf().set(opt).from(element).save();
+      }
+    </script>
+  </body>
+</html>
